@@ -65,6 +65,9 @@ const Items = () => {
           title: "New Item was Successfully Added",
           icon: "success",
         });
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       }
       if (response.status === 500) {
         swal({
@@ -172,7 +175,7 @@ const Items = () => {
                       value={price}
                       onChange={(event) => setPrice(event.target.value)}
                       placeholder="Enter product price"
-                      min="9"
+                      min="1"
                       required
                     />
                   </div>
@@ -219,42 +222,6 @@ const Items = () => {
               </form>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="container mt-3">
-        <div className="row">
-          {items.map((currElem) => {
-            return (
-              <div className="col-lg-4 col-md-6 mb-4" key={Math.random()}>
-                <div className="card">
-                  <img
-                    style={{
-                      width: "100%",
-                      height: "200px",
-                      overflow: "hidden",
-                    }}
-                    src={currElem.content.image}
-                    className="card-img-top"
-                    alt="will appear here..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title text-center mb-3">
-                      {currElem.content.name}
-                    </h5>
-                    <p className="card-text text-justify">
-                      {currElem.content.description}
-                    </p>
-                    <div className="d-flex justify-content-between align-items-center">
-                      <p className="card-text mb-0">
-                        <strong>&#x20B9; {currElem.content.price}</strong>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
         </div>
       </div>
     </>

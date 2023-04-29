@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
+
 const Dashboard = () => {
   const navigate = useNavigate();
 
@@ -142,45 +143,6 @@ const Dashboard = () => {
                     })}
                   </div>
                 </div>
-                {/* <div className="container mt-3">
-                  <div className="row">
-                    {details.map((currElem) => {
-                      return (
-                        <div
-                          className="col-lg-4 col-md-6 mb-4"
-                          key={currElem.id}
-                        >
-                          <div className="card">
-                            <img
-                              style={{
-                                width: "100%",
-                                height: "200px",
-                                overflow: "hidden",
-                              }}
-                              src={currElem.image}
-                              className="card-img-top"
-                              alt="will appear here..."
-                            />
-                            <div className="card-body">
-                              <h5 className="card-title text-center mb-3">
-                                {currElem.name}
-                              </h5>
-                              <p className="card-text text-justify">
-                                {currElem.description}
-                              </p>
-                              <div className="d-flex justify-content-between align-items-center">
-                                <p className="card-text mb-0">
-                                  <strong>&#x20B9; {currElem.price}</strong>
-                                </p>
-                                <p className="btn btn-outline-danger">Delete</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>

@@ -7,6 +7,7 @@ import Home from "./Components/Home";
 // import Products from "./Components/Products";
 import Holder from "./Components/Holder";
 import Dashboard from "./Components/Dashboard";
+import AllItems from "./Components/AllItems";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         {/* <Route path="/holder" element={<Holder />} /> */}
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="allItems" element={<AllItems />} />
         <Route path="/myItems" element={<Holder />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />

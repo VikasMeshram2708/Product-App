@@ -32,6 +32,16 @@ const Navbar = (props) => {
               ) : (
                 ""
               )}
+
+              {localStorage.getItem("token") ? (
+                <li className="nav-item active">
+                  <Link className="nav-link" to="/allitems">
+                    All Items
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
               {localStorage.getItem("token") ? (
                 <li className="nav-item active">
                   <Link className="nav-link" to="/dashboard">

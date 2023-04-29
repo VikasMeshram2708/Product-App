@@ -7,8 +7,17 @@ const products = [
     title: "Ergonomic Office Chair",
     description:
       "Adjustable height, 360-degree swivel, comfortable padding, perfect for home office.",
-    price: 129.99,
+    price: 50,
     imageURL: "https://is.gd/bAnbhY",
+    categories: "furniture",
+  },
+  {
+    id: Math.random(),
+    title: "Comfortable Sofa",
+    description:
+      "A piece of furniture for seating or lounging, typically with a back and arms, designed for comfort and relaxation.",
+    price: 100,
+    imageURL: "https://is.gd/kG8wkM",
     categories: "furniture",
   },
   {
@@ -16,31 +25,74 @@ const products = [
     title: "iPhone 13 Pro",
     description:
       "Latest model, 6.1-inch Super Retina XDR display, A15 Bionic chip, 128GB storage.",
-    price: 999.99,
+    price: 90,
     imageURL: "https://is.gd/yj0qgK",
     categories: "electronics",
+  },
+  {
+    id: Math.random(),
+    title: "MacBook",
+    description:
+      "Apple's laptop computer line, known for sleek design, high performance, and compatibility with other Apple products.",
+    price: 70,
+    imageURL: "https://is.gd/MHb2Q2",
+    categories: "electronics",
+  },
+  {
+    id: Math.random(),
+    title: "Bhagavad Gita",
+    description:
+      "A Hindu scripture that contains the teachings of Lord Krishna to Arjuna, emphasizing the path of righteousness and spiritual enlightenment.",
+    price: 250,
+    imageURL: "https://is.gd/oSkeVv",
+    categories: "books",
   },
   {
     id: Math.random(),
     title: "The Great Gatsby",
     description:
       "A novel by F. Scott Fitzgerald, published in 1925, a classic of American literature.",
-    price: 9.99,
+    price: 150,
     imageURL: "https://is.gd/LhPYl3",
     categories: "books",
   },
   {
     id: Math.random(),
-    title: "Levi's Men's 501 Original Fit Jeans",
+    title: "Dhoti",
     description:
-      "Button-fly, straight-leg jeans with classic five-pocket styling, made of 100% cotton denim.",
-    price: 59.5,
-    imageURL: "https://is.gd/egKY2L",
+      "A traditional Indian garment, typically made of cotton, that is wrapped around the waist and legs and worn by men.",
+    price: 799,
+    imageURL: "https://is.gd/DhasXl",
+    categories: "clothing",
+  },
+  {
+    id: Math.random(),
+    title: "Saree",
+    description:
+      "A traditional Indian garment worn by women, consisting of a long piece of fabric draped around the body with one end over the head.",
+    price: 899,
+    imageURL: "https://is.gd/hEWyvk",
     categories: "clothing",
   },
 ];
 
 router.get("/allItems", (req, res) => {
+  let filteredProducts = products;
+
+  // category filter if provided
+  if (req.query.category) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.categories === req.query.category
+    );
+  }
+  // price range filter if provided
+  if (req.query.minPrice && req.query.maxPrice) {
+    filter = filter.filter(
+      (product) =>
+        product.price >= parseInt(req.query.minPrice) &&
+        product.price <= parseInt(req.query.maxPrice)
+    );
+  }
   res.json(products);
 });
 
