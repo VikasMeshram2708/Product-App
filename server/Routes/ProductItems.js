@@ -7,7 +7,7 @@ const products = [
     title: "Ergonomic Office Chair",
     description:
       "Adjustable height, 360-degree swivel, comfortable padding, perfect for home office.",
-    price: 50,
+    price: 450,
     imageURL: "https://is.gd/bAnbhY",
     categories: "furniture",
   },
@@ -16,7 +16,7 @@ const products = [
     title: "Comfortable Sofa",
     description:
       "A piece of furniture for seating or lounging, typically with a back and arms, designed for comfort and relaxation.",
-    price: 100,
+    price: 1000,
     imageURL: "https://is.gd/kG8wkM",
     categories: "furniture",
   },
@@ -25,7 +25,7 @@ const products = [
     title: "iPhone 13 Pro",
     description:
       "Latest model, 6.1-inch Super Retina XDR display, A15 Bionic chip, 128GB storage.",
-    price: 90,
+    price: 990,
     imageURL: "https://is.gd/yj0qgK",
     categories: "electronics",
   },
@@ -43,7 +43,7 @@ const products = [
     title: "Bhagavad Gita",
     description:
       "A Hindu scripture that contains the teachings of Lord Krishna to Arjuna, emphasizing the path of righteousness and spiritual enlightenment.",
-    price: 250,
+    price: 908,
     imageURL: "https://is.gd/oSkeVv",
     categories: "books",
   },
@@ -61,7 +61,7 @@ const products = [
     title: "Dhoti",
     description:
       "A traditional Indian garment, typically made of cotton, that is wrapped around the waist and legs and worn by men.",
-    price: 799,
+    price: 499,
     imageURL: "https://is.gd/DhasXl",
     categories: "clothing",
   },
@@ -70,7 +70,7 @@ const products = [
     title: "Saree",
     description:
       "A traditional Indian garment worn by women, consisting of a long piece of fabric draped around the body with one end over the head.",
-    price: 899,
+    price: 999,
     imageURL: "https://is.gd/hEWyvk",
     categories: "clothing",
   },
@@ -78,6 +78,7 @@ const products = [
 
 router.get("/allItems", (req, res) => {
   let filteredProducts = products;
+  console.log(req.query);
 
   // category filter if provided
   if (req.query.category) {
@@ -86,14 +87,13 @@ router.get("/allItems", (req, res) => {
     );
   }
   // price range filter if provided
-  if (req.query.minPrice && req.query.maxPrice) {
-    filter = filter.filter(
-      (product) =>
-        product.price >= parseInt(req.query.minPrice) &&
-        product.price <= parseInt(req.query.maxPrice)
+  if (req.query.sort) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.price <= parseInt(req.query.sort)
     );
   }
-  res.json(products);
+  console.log("filteredProducts", filteredProducts);
+  res.json(filteredProducts);
 });
 
 module.exports = router;

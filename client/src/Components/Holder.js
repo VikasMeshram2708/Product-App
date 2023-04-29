@@ -7,7 +7,7 @@ import swal from "sweetalert";
 const Holder = () => {
   const navigate = useNavigate();
   const [details, setDetails] = useState([]);
-  const baseURL = "http://localhost:5000";
+  const baseURL = "http://localhost:5001";
 
   const getUserProducts = async () => {
     const response = await fetch(`${baseURL}/api/products/myProducts`, {
